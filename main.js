@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import * as d3Sankey from "d3-sankey";
+import * as d3Sankey from 'd3-sankey';
 
 const width = 928;
 const height = 600;
@@ -23,7 +23,9 @@ const sankey = d3Sankey.sankey()
 
 
 async function init() {
-  const data = await d3.json("data/data_sankey.json");
+  const jmuData = await d3.json("data/jmu.json");
+  const data = JmuNodesAndLinks(jmuData);
+
   // Applies it to the data. We make a copy of the nodes and links objects
   // so as to avoid mutating the original.
   const { nodes, links } = sankey({
