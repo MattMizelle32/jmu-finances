@@ -694,8 +694,8 @@ async function init() {
   const jmuData = await d3.json("data/jmu.json");
   //const data = forDiagram1(jmuData); //SWITCH TO DIAGRAM 1
   //const data = forDiagram2(jmuData); //SWITCH TO DIAGRAM 2
-  //const data = forDiagram3(jmuData); //SWITCH TO DIAGRAM 3
-  const data = forDiagram4(jmuData); //SWITCH TO DIAGRAM 4
+  const data = forDiagram3(jmuData); //SWITCH TO DIAGRAM 3
+  //const data = forDiagram4(jmuData); //SWITCH TO DIAGRAM 4
 
   console.log('data', data);
   // Applies it to the data. We make a copy of the nodes and links objects
