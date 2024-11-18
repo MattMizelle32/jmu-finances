@@ -23,7 +23,7 @@ Note: this not about using 3p code in your own app (final project)
     * Notice that `main.js`:
         1. loads the `d3` library: https://d3js.org/what-is-d3
         1. fetches some json data from `data/data_sankey.json`
-            * take a look at this file: 
+            * take a look at this file:
                 1. what javascript data structures are used in this file?
                 1. what general data structure (for those of you have taken Data Structures) might best represent the data that is in this file?
         1. uses the `d3-sankey` library to create a sankey diagram
@@ -36,7 +36,7 @@ We will make 4 Sankey diagrams (more details follow) using data from JMU which y
     * how does the structure of the data in this file compare to the structure of the data in `data/data_sankey.json`?
 1. Create the new sankey diagram per specs below.
 
-### 🤠 Data Wranglin' 
+### 🤠 Data Wranglin'
 1. When working conducting data analysis, including infovis, it is often necessary to wrangle the data into a format that is more amenable to the task at hand.
     * often this just means in to a format expected by our own existing code, our (or third-party, a.k.a. "3p") libraries, tools, apps, etc.
 1. In this case, we will need to wrangle the data in `data/jmu.json` into a format that is expected by the `d3-sankey` library.
@@ -58,7 +58,7 @@ Working in groups of 4 or fewer members, each group member should work on at lea
 ### Sankey 3: JMU Revenues
 1. leftmost nodes: JMU (positive) Revenue items (all items with `category` of `income`)
 1. second-to-leftmost nodes: JMU Revenue Categories (e.g. operating revenues, non-operating revenues, etc.), the set of unique `type` values from the items in the preceding column
-1. center node: JMU 
+1. center node: JMU
 1. second-to-rightmost nodes: JMU Expense (negative revenue) Categories (e.g. operating expenses), the set of unique `type` values from the items in the following column
 1. rightmost nodes: JMU Expense items (e.g. Instruction, Research, etc.) (all items with the `category` of `expense`)
 
@@ -109,7 +109,7 @@ On a whiteboard, paper (napkin?!), or a chalkboard if you must 😏, sketch what
 1. Declare the function `forDiagram3` that will transform the data from the JMU data file into the format expected by the `d3-sankey` library. This function should:
     1. return an object with `nodes` and `links` keys, each of which should have an array of objects as their value.
     1. The `nodes` array should have an object for each node in the diagram
-    1. The `links` array should have an object for each link in the diagram. 
+    1. The `links` array should have an object for each link in the diagram.
     1. The `nodes` objects should have at least `name` and `title` keys
     1. The `links` objects should have at least `source`, `target`, and `value` keys.
 1. since the tasks above are so many, decompose the problem further, and where necessary, do a little work to simplify the next functions' work. consider:
@@ -131,7 +131,7 @@ On a whiteboard, paper (napkin?!), or a chalkboard if you must 😏, sketch what
 1. at this point of problem decomposition, you have reduced the responsibility of (e.g.) getNodesCol1 to returning a list of nodes for only the first column, all of the nodes for a column are defined as being created using the same pieces of the dataset
 
 ### Links
-1. depending on how many columns you have, there may be different rules for constructing the links in the diagram. the rules should be the same for links between the same two columns, but will likely differ for links between other columns. 
+1. depending on how many columns you have, there may be different rules for constructing the links in the diagram. the rules should be the same for links between the same two columns, but will likely differ for links between other columns.
     * **Note: since the links should use actual, existing node `name`s for their `source` and `target` values, you may want to pass the list of nodes created in getNodes as a second parameter to `getLinks`**
 1. as the specs say different ways about how to get the links for different column-pairs, you might want to further decompose this problem by having a function for each pair of columns of nodes (unless your diagram has only 2 columns), e.g. `getLinksCol1Col2` (or instead of `Col` you could use the semantic meaning of that column), etc.
     * this reduces the responsibilities of the `getLinks` function to just calling these other functions and combining their results
